@@ -6,7 +6,7 @@ const tours = [
     id: '1',
     title: 'Arenal Volcano Adventure',
     location: 'La Fortuna',
-    image: 'https://images.unsplash.com/photo-1632935190508-bd46801c14af', // Red-eyed tree frog
+    image: 'volcano',
     duration: '8 hours',
     price: 99,
     guide: 'Chris',
@@ -15,7 +15,7 @@ const tours = [
     id: '2',
     title: 'Manuel Antonio Beach Tour',
     location: 'Pacific Coast',
-    image: 'https://images.unsplash.com/photo-1599511772946-b9288c486d29', // White-faced capuchin monkey
+    image: 'beach',
     duration: '6 hours',
     price: 79,
     guide: 'Chris',
@@ -24,7 +24,7 @@ const tours = [
     id: '3',
     title: 'Caribbean Snorkeling Adventure',
     location: 'Limon',
-    image: 'https://images.unsplash.com/photo-1544552866-d3ed42536d15', // Sea turtle
+    image: 'ocean',
     duration: '4 hours',
     price: 69,
     guide: 'Diego',
@@ -33,7 +33,7 @@ const tours = [
     id: '4',
     title: 'Rainforest Hiking Experience',
     location: 'La Fortuna',
-    image: 'https://images.unsplash.com/photo-1632935189145-c78d415bde8e', // Toucan
+    image: 'forest',
     duration: '5 hours',
     price: 59,
     guide: 'Chris',
@@ -42,7 +42,7 @@ const tours = [
     id: '5',
     title: 'Tortuguero Canal Tour',
     location: 'Limon',
-    image: 'https://images.unsplash.com/photo-1582486225644-3897b3772b31', // Sloth
+    image: 'river',
     duration: '7 hours',
     price: 89,
     guide: 'Diego',
@@ -51,7 +51,7 @@ const tours = [
     id: '6',
     title: 'Sunset Sailing Adventure',
     location: 'Pacific Coast',
-    image: 'https://images.unsplash.com/photo-1605142859862-978be7eba909', // Scarlet Macaw
+    image: 'sunset',
     duration: '4 hours',
     price: 129,
     guide: 'Chris',
@@ -60,23 +60,23 @@ const tours = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-primary-light/10 to-ocean-light/10">
       <div className="relative h-[60vh] overflow-hidden">
-        <img 
-          src="https://images.unsplash.com/photo-1589825743636-e3c2f7f12c1c" // Resplendent Quetzal
-          alt="Costa Rica wildlife"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-          <div className="text-center text-white">
-            <h1 className="text-5xl font-bold mb-4">Top Tours Costa Rica</h1>
-            <p className="text-xl">Discover the incredible wildlife of Costa Rica</p>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary to-ocean animate-gradient-x">
+          <div className="absolute inset-0 opacity-20">
+            <div className="floating-leaves"></div>
+          </div>
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center text-white z-10">
+            <h1 className="text-5xl font-bold mb-4 animate-fade-up">Top Tours Costa Rica</h1>
+            <p className="text-xl animate-fade-up delay-150">Discover the incredible wildlife of Costa Rica</p>
           </div>
         </div>
       </div>
 
       <div className="container mx-auto py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">Our Experiences</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-primary">Our Experiences</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {tours.map((tour) => (
             <TourCard key={tour.id} {...tour} />

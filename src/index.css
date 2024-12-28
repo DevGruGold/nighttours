@@ -90,6 +90,78 @@
   }
 }
 
+@layer components {
+  .floating-leaves {
+    @apply absolute inset-0;
+    background: 
+      radial-gradient(circle at 50% 50%, #4A7856 2px, transparent 2px),
+      radial-gradient(circle at 30% 30%, #2D5A27 4px, transparent 4px),
+      radial-gradient(circle at 70% 70%, #1E3F1C 3px, transparent 3px);
+    background-size: 100px 100px;
+    animation: float 20s linear infinite;
+  }
+
+  .floating-bubbles {
+    @apply absolute inset-0;
+    background: 
+      radial-gradient(circle at 50% 50%, rgba(135, 206, 235, 0.4) 8px, transparent 8px),
+      radial-gradient(circle at 30% 30%, rgba(30, 144, 255, 0.3) 12px, transparent 12px),
+      radial-gradient(circle at 70% 70%, rgba(135, 206, 235, 0.2) 6px, transparent 6px);
+    background-size: 100px 100px;
+    animation: float 15s linear infinite;
+  }
+
+  .floating-waves {
+    @apply absolute inset-0;
+    background: linear-gradient(45deg, 
+      rgba(135, 206, 235, 0.2) 25%, 
+      transparent 25%, 
+      transparent 50%, 
+      rgba(135, 206, 235, 0.2) 50%, 
+      rgba(135, 206, 235, 0.2) 75%, 
+      transparent 75%, 
+      transparent
+    );
+    background-size: 50px 50px;
+    animation: wave 10s linear infinite;
+  }
+}
+
+@keyframes float {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100px 100px;
+  }
+}
+
+@keyframes wave {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 15s ease infinite;
+}
+
 @layer base {
   * {
     @apply border-border;
