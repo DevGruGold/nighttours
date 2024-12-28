@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PalmTree } from 'lucide-react';
+import { TreePalm } from 'lucide-react';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const Header = () => {
           onClick={() => navigate('/')}
           className="flex items-center space-x-2 text-primary hover:text-primary-dark transition-colors"
         >
-          <PalmTree className="h-6 w-6" />
+          <TreePalm className="h-6 w-6" />
           <span className="font-bold text-lg hidden sm:inline">Top Tours Costa Rica</span>
           <span className="font-bold text-lg sm:hidden">Top Tours CR</span>
         </button>
