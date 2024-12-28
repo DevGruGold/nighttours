@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
-import { Monkey, TreePalm, Mountain, Turtle, MapPin } from 'lucide-react';
+import { TreePalm, Mountain, Turtle, MapPin, Bird, Leaf } from 'lucide-react';
 
 interface TourCardProps {
   id: string;
@@ -24,11 +24,11 @@ const TourCard = ({ id, title, location, image, duration, price }: TourCardProps
       case 'ocean':
         return { icon: Turtle, emoji: '🐢', bgColor: 'bg-ocean/10' };
       case 'forest':
-        return { icon: Monkey, emoji: '🌴', bgColor: 'bg-primary-light/10' };
+        return { icon: Leaf, emoji: '🌴', bgColor: 'bg-primary-light/10' };
       case 'river':
         return { icon: TreePalm, emoji: '🛶', bgColor: 'bg-ocean-light/10' };
       case 'sunset':
-        return { icon: TreePalm, emoji: '🌅', bgColor: 'bg-earth/10' };
+        return { icon: Bird, emoji: '🌅', bgColor: 'bg-earth/10' };
       default:
         return { icon: MapPin, emoji: '🗺️', bgColor: 'bg-primary/10' };
     }
