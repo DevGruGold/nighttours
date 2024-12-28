@@ -60,23 +60,25 @@ const tours = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary-light/10 to-ocean-light/10">
-      <div className="relative h-[60vh] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary to-ocean animate-gradient-x">
-          <div className="absolute inset-0 opacity-20">
-            <div className="floating-leaves"></div>
-          </div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-b from-primary-light/5 to-ocean-light/5">
+      <div className="relative h-[40vh] overflow-hidden bg-primary">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary to-ocean animate-gradient-x opacity-90" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white z-10">
-            <h1 className="text-5xl font-bold mb-4 animate-fade-up">Top Tours Costa Rica</h1>
-            <p className="text-xl animate-fade-up delay-150">Discover the incredible wildlife of Costa Rica</p>
+            <h1 className="text-5xl font-bold mb-4 animate-fade-up">
+              Top Tours Costa Rica 🌴
+            </h1>
+            <p className="text-xl animate-fade-up delay-150">
+              Discover the incredible wildlife of Costa Rica 🦋
+            </p>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto py-16">
-        <h2 className="text-3xl font-bold text-center mb-12 text-primary">Our Experiences</h2>
+      <div className="container mx-auto py-16 px-4">
+        <h2 className="text-3xl font-bold text-center mb-12 text-primary">
+          Our Experiences
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {tours.map((tour) => (
             <TourCard key={tour.id} {...tour} />
