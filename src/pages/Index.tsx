@@ -6,7 +6,7 @@ const tours = [
     id: '1',
     title: 'Arenal Volcano Adventure',
     location: 'La Fortuna',
-    image: 'https://images.unsplash.com/photo-1482938289607-e9573fc25ebb',
+    image: 'https://images.unsplash.com/photo-1632935190508-bd46801c14af', // Red-eyed tree frog
     duration: '8 hours',
     price: 99,
     guide: 'Chris',
@@ -15,7 +15,7 @@ const tours = [
     id: '2',
     title: 'Manuel Antonio Beach Tour',
     location: 'Pacific Coast',
-    image: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21',
+    image: 'https://images.unsplash.com/photo-1599511772946-b9288c486d29', // White-faced capuchin monkey
     duration: '6 hours',
     price: 79,
     guide: 'Chris',
@@ -24,7 +24,7 @@ const tours = [
     id: '3',
     title: 'Caribbean Snorkeling Adventure',
     location: 'Limon',
-    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
+    image: 'https://images.unsplash.com/photo-1544552866-d3ed42536d15', // Sea turtle
     duration: '4 hours',
     price: 69,
     guide: 'Diego',
@@ -33,7 +33,7 @@ const tours = [
     id: '4',
     title: 'Rainforest Hiking Experience',
     location: 'La Fortuna',
-    image: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86',
+    image: 'https://images.unsplash.com/photo-1632935189145-c78d415bde8e', // Toucan
     duration: '5 hours',
     price: 59,
     guide: 'Chris',
@@ -42,7 +42,7 @@ const tours = [
     id: '5',
     title: 'Tortuguero Canal Tour',
     location: 'Limon',
-    image: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67',
+    image: 'https://images.unsplash.com/photo-1582486225644-3897b3772b31', // Sloth
     duration: '7 hours',
     price: 89,
     guide: 'Diego',
@@ -51,7 +51,7 @@ const tours = [
     id: '6',
     title: 'Sunset Sailing Adventure',
     location: 'Pacific Coast',
-    image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e',
+    image: 'https://images.unsplash.com/photo-1605142859862-978be7eba909', // Scarlet Macaw
     duration: '4 hours',
     price: 129,
     guide: 'Chris',
@@ -63,14 +63,14 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="relative h-[60vh] overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1501854140801-50d01698950b"
-          alt="Costa Rica landscape"
+          src="https://images.unsplash.com/photo-1589825743636-e3c2f7f12c1c" // Resplendent Quetzal
+          alt="Costa Rica wildlife"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <div className="text-center text-white">
             <h1 className="text-5xl font-bold mb-4">Top Tours Costa Rica</h1>
-            <p className="text-xl">Discover the natural wonders of Costa Rica</p>
+            <p className="text-xl">Discover the incredible wildlife of Costa Rica</p>
           </div>
         </div>
       </div>
