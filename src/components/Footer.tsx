@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, Phone, Facebook, Instagram, Twitter, TikTok } from 'lucide-react';
+import { Mail, Phone, Facebook, Instagram, Twitter, Music2 } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -56,7 +56,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="hover:text-primary transition-colors"
               >
-                <TikTok className="h-6 w-6" />
+                <Music2 className="h-6 w-6" />
               </a>
             </div>
           </div>
