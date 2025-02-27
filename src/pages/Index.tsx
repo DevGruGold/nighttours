@@ -1,3 +1,4 @@
+
 import React from 'react';
 import TourCard from '@/components/TourCard';
 
@@ -66,10 +67,10 @@ const Index = () => {
         <div className="absolute inset-0 flex items-center justify-center px-4">
           <div className="text-center text-white z-10">
             <h1 className="text-3xl md:text-5xl font-bold mb-4 animate-fade-up">
-              Top Tours Costa Rica 🌴
+              Sloth Park, Costa Rica 🦥
             </h1>
             <p className="text-lg md:text-xl animate-fade-up delay-150">
-              Discover the incredible wildlife of Costa Rica 🦋
+              Experience the magic of La Fortuna's wildlife 🌿
             </p>
           </div>
         </div>
