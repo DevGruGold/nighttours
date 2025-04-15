@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Filter, Moon } from 'lucide-react';
@@ -10,7 +11,7 @@ const tours = [
     id: '1',
     title: 'Night Tour Rio Habana',
     location: 'La Fortuna, Costa Rica',
-    image: 'frog',
+    image: '/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png',
     duration: '1.5 to 2 hours',
     price: 45,
     rating: 4.9,
@@ -31,7 +32,7 @@ const tours = [
     id: '2',
     title: 'Red-Eyed Tree Frog Safari',
     location: 'La Fortuna',
-    image: 'frog',
+    image: '/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png',
     duration: '3 hours',
     price: 50,
     rating: 4.8,
@@ -45,7 +46,7 @@ const tours = [
     id: '3',
     title: 'Sloth Spotting Night Tour',
     location: 'La Fortuna',
-    image: 'sloth',
+    image: '/lovable-uploads/07731ecd-b5ee-4075-a120-d022a5c56f60.png',
     duration: '3 hours',
     price: 40,
     rating: 4.8,
@@ -58,7 +59,7 @@ const tours = [
     id: '4',
     title: 'Toucan Observation Tour',
     location: 'La Fortuna',
-    image: 'toucan',
+    image: '/lovable-uploads/cec58bf8-8041-4883-af29-2b5eea0c7852.png',
     duration: '4 hours',
     price: 55,
     rating: 4.7,
@@ -71,7 +72,7 @@ const tours = [
     id: '5',
     title: 'Rainforest Night Adventure',
     location: 'La Fortuna',
-    image: 'sloth',
+    image: '/lovable-uploads/07731ecd-b5ee-4075-a120-d022a5c56f60.png',
     duration: '4 hours',
     price: 60,
     rating: 4.7,
@@ -84,7 +85,7 @@ const tours = [
     id: '6',
     title: 'Photography Night Safari',
     location: 'La Fortuna',
-    image: 'toucan',
+    image: '/lovable-uploads/cec58bf8-8041-4883-af29-2b5eea0c7852.png',
     duration: '4 hours',
     price: 65,
     rating: 4.7,
@@ -97,7 +98,7 @@ const tours = [
     id: '7',
     title: 'Family Night Tour',
     location: 'La Fortuna',
-    image: 'frog',
+    image: '/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png',
     duration: '2 hours',
     price: 35,
     rating: 4.6,
@@ -110,7 +111,7 @@ const tours = [
     id: '8',
     title: 'Arenal Wildlife Night Tour',
     location: 'La Fortuna',
-    image: 'toucan',
+    image: '/lovable-uploads/cec58bf8-8041-4883-af29-2b5eea0c7852.png',
     duration: '4 hours',
     price: 55,
     rating: 4.6,
@@ -123,7 +124,7 @@ const tours = [
     id: '9',
     title: 'Rio Habana Frog Discovery',
     location: 'La Fortuna',
-    image: 'frog',
+    image: '/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png',
     duration: '3 hours',
     price: 45,
     rating: 4.6,
@@ -163,17 +164,6 @@ const Index = () => {
     window.open(`https://wa.me/${phone}?text=${message}`);
   };
 
-  const getImageUrl = (imageType: string): string => {
-    if (imageType === 'toucan') {
-      return 'public/lovable-uploads/cec58bf8-8041-4883-af29-2b5eea0c7852.png';
-    } else if (imageType === 'sloth') {
-      return 'public/lovable-uploads/07731ecd-b5ee-4075-a120-d022a5c56f60.png';
-    } else if (imageType === 'frog') {
-      return 'public/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png';
-    }
-    return imageType;
-  };
-
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Header Section with Site Title */}
@@ -191,7 +181,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <img 
-                src="public/lovable-uploads/461fb1d7-9855-49a9-a1c9-e4d3c31e3437.png" 
+                src="/lovable-uploads/461fb1d7-9855-49a9-a1c9-e4d3c31e3437.png" 
                 alt="Night Walk Adventure Flyer" 
                 className="rounded-lg shadow-xl mx-auto"
               />
@@ -261,7 +251,7 @@ const Index = () => {
               {/* Tour Image */}
               <div className="aspect-square overflow-hidden">
                 <img 
-                  src={getImageUrl(tour.image)} 
+                  src={tour.image} 
                   alt={tour.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />

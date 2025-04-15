@@ -21,18 +21,6 @@ interface TourCardProps {
 const TourCard = ({ id, title, location, image, duration, price, rating, rank, totalReviews = 0, description }: TourCardProps) => {
   const navigate = useNavigate();
 
-  const getImageUrl = (imageType: string): string => {
-    if (imageType === 'toucan') {
-      return 'public/lovable-uploads/cec58bf8-8041-4883-af29-2b5eea0c7852.png';
-    } else if (imageType === 'sloth') {
-      return 'public/lovable-uploads/07731ecd-b5ee-4075-a120-d022a5c56f60.png';
-    } else if (imageType === 'frog') {
-      return 'public/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png';
-    }
-    // Default or fallback image
-    return image;
-  };
-
   const renderStars = (rating: number) => {
     const stars = [];
     const fullStars = Math.floor(rating);
@@ -69,7 +57,7 @@ const TourCard = ({ id, title, location, image, duration, price, rating, rank, t
       <div className="relative">
         <AspectRatio ratio={1}>
           <img 
-            src={getImageUrl(image)}
+            src={image}
             alt={title}
             className="w-full h-full object-cover"
           />
