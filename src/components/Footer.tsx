@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, Phone, Facebook, Instagram, Twitter, Music2 } from 'lucide-react';
+import { Mail, Phone, Facebook, Instagram, Twitter, Music2, Award } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -18,7 +18,9 @@ const Footer = () => {
               </div>
               <div className="flex items-center">
                 <Phone className="h-5 w-5 mr-2" />
-                <p>La Fortuna, Costa Rica</p>
+                <a href="https://wa.me/50685087360" className="hover:text-primary transition-colors">
+                  +506 8508-7360
+                </a>
               </div>
             </div>
           </div>
@@ -62,24 +64,15 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="/privacy" className="hover:text-primary transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="/terms" className="hover:text-primary transition-colors">
-                  Terms of Service
-                </a>
-              </li>
-            </ul>
+            <h3 className="text-xl font-bold mb-4">About Us</h3>
+            <p className="text-sm">
+              Top Tours Costa Rica ranks the best tours across the country based on authentic TripAdvisor reviews and ratings to help you plan your perfect Costa Rican adventure.
+            </p>
           </div>
         </div>
         
         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-          <p>&copy; {new Date().getFullYear()} Sloth Park, Costa Rica. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Top Tours Costa Rica. All rights reserved.</p>
         </div>
       </div>
     </footer>

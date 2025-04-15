@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import BookingForm from '@/components/BookingForm';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock, Star, Award } from 'lucide-react';
 import { format } from 'date-fns';
 
 const tours = [
@@ -14,8 +14,11 @@ const tours = [
     duration: '8 hours',
     price: 99,
     description: 'Experience the majestic Arenal Volcano up close with this thrilling adventure tour. Spot the iconic red-eyed tree frogs, witness unique wildlife, and enjoy stunning views of one of Costa Rica\'s most active volcanoes.',
+    rating: 4.9,
+    totalReviews: 345,
+    region: 'Northern Plains',
     guide: 'Chris',
-    phone: '+50689484857'
+    phone: '+50685087360'
   },
   {
     id: '2',
@@ -85,13 +88,41 @@ const TourDetail = () => {
 
   const handleBooking = (date: Date, guests: number) => {
     const message = encodeURIComponent(
-      `Hello ${tour.guide}, I would like to book the ${tour.title} tour:\n\n` +
+      `Hello, I would like to book the ${tour.title} tour:\n\n` +
       `Date: ${format(date, 'PPP')}\n` +
       `Number of guests: ${guests}\n` +
       `Total price: $${tour.price * guests}\n\n` +
       `Please confirm availability and provide payment details.`
     );
     window.open(`https://wa.me/${tour.phone.replace('+', '')}?text=${message}`);
+  };
+
+  const renderStars = (rating: number) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<Star key={`full-${i}`} className="w-5 h-5 fill-yellow-400 text-yellow-400" />);
+    }
+    
+    if (hasHalfStar) {
+      stars.push(
+        <div key="half" className="relative w-5 h-5">
+          <Star className="absolute w-5 h-5 text-yellow-400" />
+          <div className="absolute w-2.5 h-5 overflow-hidden">
+            <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+          </div>
+        </div>
+      );
+    }
+    
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<Star key={`empty-${i}`} className="w-5 h-5 text-gray-300" />);
+    }
+
+    return stars;
   };
 
   return (
@@ -102,27 +133,62 @@ const TourDetail = () => {
           alt={tour.title}
           className="w-full h-full object-cover"
         />
+        <div className="absolute top-0 left-0 w-full h-full bg-black/20" />
         <Button
           variant="ghost"
-          className="absolute top-4 left-4 text-white hover:text-white/80"
+          className="absolute top-4 left-4 text-white hover:text-white/80 z-10"
           onClick={() => navigate('/')}
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back
         </Button>
+        
+        <div className="absolute bottom-4 left-4 bg-primary text-white px-3 py-1 rounded-full flex items-center">
+          <Award className="h-4 w-4 mr-1" />
+          <span>Top Rated Tour</span>
+        </div>
       </div>
 
       <div className="container mx-auto py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
             <h1 className="text-4xl font-bold mb-4">{tour.title}</h1>
-            <div className="flex items-center gap-4 mb-6">
-              <span className="text-gray-600">{tour.location}</span>
-              <span className="text-gray-600">{tour.duration}</span>
-              <span className="font-semibold">${tour.price} per person</span>
+            
+            <div className="flex items-center mb-4">
+              {renderStars(tour.rating)}
+              <span className="ml-2 font-semibold text-lg">{tour.rating.toFixed(1)}</span>
+              <span className="ml-2 text-gray-600">({tour.totalReviews} reviews)</span>
             </div>
-            <p className="text-gray-700 mb-6">{tour.description}</p>
+            
+            <div className="flex flex-wrap items-center gap-4 mb-6">
+              <div className="flex items-center text-gray-600">
+                <MapPin className="h-5 w-5 mr-1 text-primary" />
+                <span>{tour.location}</span>
+              </div>
+              <div className="flex items-center text-gray-600">
+                <Clock className="h-5 w-5 mr-1 text-primary" />
+                <span>{tour.duration}</span>
+              </div>
+              <div className="font-semibold text-primary text-lg">${tour.price} per person</div>
+            </div>
+            
+            <div className="mb-8">
+              <h2 className="text-2xl font-semibold mb-3">About This Tour</h2>
+              <p className="text-gray-700 mb-6">{tour.description}</p>
+            </div>
+            
+            <div className="mb-6">
+              <h2 className="text-2xl font-semibold mb-3">Why It's Top Rated</h2>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Exceptional guides with extensive knowledge</li>
+                <li>Small group sizes for personalized experience</li>
+                <li>Consistently high reviews for wildlife sightings</li>
+                <li>Safety standards that exceed expectations</li>
+                <li>Environmentally responsible practices</li>
+              </ul>
+            </div>
           </div>
+          
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold mb-6">Book this Experience</h2>
             <BookingForm 
