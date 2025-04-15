@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
-import TourCard from '@/components/TourCard';
 import { Button } from '@/components/ui/button';
 import { Filter, Moon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const tourTypes = ["All", "Sloths", "Frogs", "Toucans", "Mixed Wildlife"];
 
@@ -12,13 +11,21 @@ const tours = [
     title: 'Night Tour Rio Habana',
     location: 'La Fortuna, Costa Rica',
     image: 'frog',
-    duration: '3 hours',
+    duration: '1.5 to 2 hours',
     price: 45,
     rating: 4.9,
     totalReviews: 345,
     region: 'Northern Plains',
     type: 'Frogs',
     description: 'Experience the magic of the rainforest at night and discover iconic red-eyed tree frogs in their natural habitat.',
+    highlights: [
+      'Transportation included',
+      'Bilingual tour guide',
+      'Private reserve next to Arenal volcano',
+      'Small groups for a personalized experience'
+    ],
+    promo: '15% OFF GROUPS + 3 OR MORE',
+    phone: '50685087360'
   },
   {
     id: '2',
@@ -32,6 +39,7 @@ const tours = [
     region: 'Northern Plains',
     type: 'Frogs',
     description: 'A specialized tour focused on finding the iconic red-eyed tree frogs in their natural habitat.',
+    phone: '50685087360'
   },
   {
     id: '3',
@@ -134,6 +142,7 @@ const sortedTours = [...tours].sort((a, b) =>
 const Index = () => {
   const [filteredTours, setFilteredTours] = useState(sortedTours);
   const [selectedType, setSelectedType] = useState<string>("All");
+  const navigate = useNavigate();
   
   const handleTypeFilter = (type: string) => {
     setSelectedType(type);
@@ -144,112 +153,158 @@ const Index = () => {
     }
   };
 
+  const handleBookNow = (tourId: string, phone: string) => {
+    const tour = sortedTours.find(t => t.id === tourId);
+    if (!tour) return;
+    
+    const message = encodeURIComponent(
+      `Hello, I would like to book the ${tour.title} night tour in La Fortuna. Please provide availability and details.`
+    );
+    window.open(`https://wa.me/${phone}?text=${message}`);
+  };
+
+  const getImageUrl = (imageType: string): string => {
+    if (imageType === 'toucan') {
+      return 'public/lovable-uploads/cec58bf8-8041-4883-af29-2b5eea0c7852.png';
+    } else if (imageType === 'sloth') {
+      return 'public/lovable-uploads/07731ecd-b5ee-4075-a120-d022a5c56f60.png';
+    } else if (imageType === 'frog') {
+      return 'public/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png';
+    }
+    return imageType;
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Hero Section with Large Wildlife Image */}
-      <div className="relative h-[80vh] overflow-hidden">
-        <img 
-          src="public/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png" 
-          alt="Red-eyed tree frog"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
-        
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">NIGHT TOUR RIO HABANA</h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl">
-            Experience Costa Rica's magical wildlife after dark in La Fortuna
-          </p>
-          <Button 
-            size="lg" 
-            className="bg-white text-black hover:bg-white/90"
-            onClick={() => document.getElementById('tours')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Explore Tours
-          </Button>
-        </div>
+      {/* Header Section with Site Title */}
+      <div className="container mx-auto py-12 text-center">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">NIGHT TOUR RIO HABANA</h1>
+        <p className="text-xl md:text-2xl mb-6">La Fortuna, Costa Rica</p>
+        <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+          Discover Costa Rica's magical wildlife after dark with our expert-guided night tours.
+        </p>
       </div>
 
-      <div id="tours" className="container mx-auto py-16 px-4">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 flex items-center justify-center">
-            <Moon className="h-8 w-8 mr-3" /> Top-Rated Night Tours
-          </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Discover the best wildlife night tours in La Fortuna, ranked by TripAdvisor ratings.
-            Our expert guides will help you spot red-eyed tree frogs, sloths, toucans and more.
-          </p>
-        </div>
-
-        <div className="mb-10">
-          <h3 className="text-xl font-semibold mb-4">Filter by Wildlife</h3>
-          <div className="flex flex-wrap gap-2">
-            {tourTypes.map(type => (
-              <Button 
-                key={type}
-                variant={selectedType === type ? "default" : "outline"}
-                onClick={() => handleTypeFilter(type)}
-                className={selectedType === type ? "bg-white text-black" : "text-white border-white"}
-              >
-                {type}
-              </Button>
-            ))}
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredTours.map((tour, index) => (
-            <TourCard 
-              key={tour.id} 
-              {...tour} 
-              rank={sortedTours.findIndex(t => t.id === tour.id) + 1}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Featured Wildlife Section */}
-      <div className="py-16 bg-gray-900">
+      {/* Featured Night Walk Adventure Flyer */}
+      <div className="bg-green-400 py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">Meet Our Wildlife Stars</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
               <img 
-                src="public/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png" 
-                alt="Red-eyed Tree Frog" 
-                className="w-full h-64 object-cover rounded-lg mb-4"
+                src="public/lovable-uploads/461fb1d7-9855-49a9-a1c9-e4d3c31e3437.png" 
+                alt="Night Walk Adventure Flyer" 
+                className="rounded-lg shadow-xl mx-auto"
               />
-              <h3 className="text-2xl font-bold mb-2">Red-eyed Tree Frogs</h3>
-              <p className="text-gray-300">
-                These iconic amphibians are the stars of our night tours, with their vibrant red eyes and colorful bodies.
-              </p>
             </div>
-            
-            <div className="text-center">
-              <img 
-                src="public/lovable-uploads/07731ecd-b5ee-4075-a120-d022a5c56f60.png" 
-                alt="Sloth" 
-                className="w-full h-64 object-cover rounded-lg mb-4"
-              />
-              <h3 className="text-2xl font-bold mb-2">Sloths</h3>
-              <p className="text-gray-300">
-                These gentle, slow-moving mammals are often spotted during our tours as they wake up for their nocturnal activities.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <img 
-                src="public/lovable-uploads/cec58bf8-8041-4883-af29-2b5eea0c7852.png" 
-                alt="Toucan" 
-                className="w-full h-64 object-cover rounded-lg mb-4"
-              />
-              <h3 className="text-2xl font-bold mb-2">Toucans</h3>
-              <p className="text-gray-300">
-                With their distinctive large, colorful bills, toucans are one of the most beloved sights on our night tours.
-              </p>
+            <div className="text-black">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">NIGHT WALK ADVENTURE</h2>
+              <p className="text-xl font-semibold mb-6">15% OFF GROUPS + 3 OR MORE</p>
+              <ul className="space-y-3 text-lg mb-6">
+                <li className="flex items-center">
+                  <span className="mr-2 text-2xl">•</span> Transportation included
+                </li>
+                <li className="flex items-center">
+                  <span className="mr-2 text-2xl">•</span> Bilingual tour guide
+                </li>
+                <li className="flex items-center">
+                  <span className="mr-2 text-2xl">•</span> Private reserve next to Arenal volcano
+                </li>
+                <li className="flex items-center">
+                  <span className="mr-2 text-2xl">•</span> Small groups for a personalized experience
+                </li>
+              </ul>
+              <p className="text-xl mb-6">1.5 to 2 hours</p>
+              <Button 
+                className="bg-black hover:bg-gray-800 text-white text-lg px-8 py-6"
+                onClick={() => handleBookNow('1', '50685087360')}
+              >
+                Book Now via WhatsApp
+              </Button>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Tour Tile Gallery */}
+      <div id="tours" className="container mx-auto py-16 px-4">
+        <div className="mb-10">
+          <h2 className="text-3xl font-bold mb-8 text-center">
+            Explore Our Night Tours
+          </h2>
+          
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4">Filter by Wildlife</h3>
+            <div className="flex flex-wrap gap-2">
+              {tourTypes.map(type => (
+                <Button 
+                  key={type}
+                  variant={selectedType === type ? "default" : "outline"}
+                  onClick={() => handleTypeFilter(type)}
+                  className={selectedType === type ? "bg-green-500 text-black hover:bg-green-600" : "text-white border-white hover:bg-gray-800"}
+                >
+                  {type}
+                </Button>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        {/* Tour Tile Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredTours.map((tour) => (
+            <div key={tour.id} className="group relative overflow-hidden rounded-lg cursor-pointer">
+              {/* Tour Rank Badge */}
+              <div className="absolute top-3 left-3 z-10 bg-white text-black font-bold rounded-full h-8 w-8 flex items-center justify-center">
+                {sortedTours.findIndex(t => t.id === tour.id) + 1}
+              </div>
+              
+              {/* Tour Image */}
+              <div className="aspect-square overflow-hidden">
+                <img 
+                  src={getImageUrl(tour.image)} 
+                  alt={tour.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-all duration-300"></div>
+              </div>
+              
+              {/* Tour Details Overlay */}
+              <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+                <h3 className="text-2xl font-bold mb-2 group-hover:text-green-400 transition-colors">
+                  {tour.title}
+                </h3>
+                <p className="text-sm mb-3 opacity-90">{tour.location}</p>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center">
+                    <span className="text-yellow-400 mr-1">★</span>
+                    <span className="font-bold">{tour.rating.toFixed(1)}</span>
+                    <span className="text-xs ml-1">({tour.totalReviews})</span>
+                  </div>
+                  <span className="font-bold">${tour.price}</span>
+                </div>
+                
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-auto">
+                  <div className="flex space-x-2">
+                    <Button 
+                      className="w-full bg-green-500 hover:bg-green-600 text-black"
+                      onClick={() => navigate(`/tour/${tour.id}`)}
+                    >
+                      View Details
+                    </Button>
+                    <Button 
+                      className="w-full bg-white hover:bg-gray-200 text-black"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleBookNow(tour.id, tour.phone || '50685087360');
+                      }}
+                    >
+                      Book Now
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
