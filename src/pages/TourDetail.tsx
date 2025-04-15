@@ -1,79 +1,92 @@
+
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import BookingForm from '@/components/BookingForm';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, MapPin, Clock, Star, Award } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock, Star, Award, Moon } from 'lucide-react';
 import { format } from 'date-fns';
 
 const tours = [
   {
     id: '1',
-    title: 'Arenal Volcano Adventure',
-    location: 'La Fortuna',
-    image: 'https://images.unsplash.com/photo-1632935190508-bd46801c14af',
-    duration: '8 hours',
-    price: 99,
-    description: 'Experience the majestic Arenal Volcano up close with this thrilling adventure tour. Spot the iconic red-eyed tree frogs, witness unique wildlife, and enjoy stunning views of one of Costa Rica\'s most active volcanoes.',
+    title: 'Night Tour Rio Habana',
+    location: 'La Fortuna, Costa Rica',
+    image: 'public/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png',
+    duration: '3 hours',
+    price: 45,
+    description: 'Experience the magic of the Rio Habana area after dark with our expert-guided night tour. Witness the transformation of the rainforest as nocturnal creatures emerge, including the iconic red-eyed tree frogs. Our guides use specialized techniques to locate wildlife while respecting their natural habitat.',
     rating: 4.9,
     totalReviews: 345,
     region: 'Northern Plains',
     guide: 'Chris',
-    phone: '+50685087360'
+    phone: '+50685087360',
+    highlights: [
+      'Spot red-eyed tree frogs in their natural habitat',
+      'Learn about nocturnal rainforest ecosystems',
+      'Expert bilingual guides with spotting equipment',
+      'Small groups for a personalized experience',
+      'Convenient location near La Fortuna'
+    ]
   },
   {
     id: '2',
-    title: 'Manuel Antonio Beach Tour',
-    location: 'Pacific Coast',
-    image: 'https://images.unsplash.com/photo-1599511772946-b9288c486d29',
-    duration: '6 hours',
-    price: 79,
-    description: 'Discover the pristine beaches and diverse wildlife of Manuel Antonio National Park. Watch playful white-faced capuchin monkeys, spot sloths, and relax on beautiful white sand beaches.',
+    title: 'Red-Eyed Tree Frog Safari',
+    location: 'La Fortuna',
+    image: 'public/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png',
+    duration: '3 hours',
+    price: 50,
+    description: 'A specialized tour focused on finding the iconic red-eyed tree frogs in their natural habitat. Learn about their unique adaptations and behaviors from our knowledgeable guides.',
+    rating: 4.8,
+    totalReviews: 289,
     guide: 'Chris',
-    phone: '+50689484857'
+    phone: '+50685087360',
+    highlights: [
+      'Focus on red-eyed tree frogs and other amphibians',
+      'Photography assistance from expert guides',
+      'Learn about frog conservation efforts',
+      'All required equipment provided',
+      'Hotel pickup and drop-off available'
+    ]
   },
   {
     id: '3',
-    title: 'Caribbean Snorkeling Adventure',
-    location: 'Limon',
-    image: 'https://images.unsplash.com/photo-1544552866-d3ed42536d15',
-    duration: '4 hours',
-    price: 69,
-    description: 'Explore the vibrant underwater world of the Caribbean coast. Swim with sea turtles, discover coral reefs, and experience the unique marine life of Costa Rica\'s Caribbean region.',
+    title: 'Sloth Spotting Night Tour',
+    location: 'La Fortuna',
+    image: 'public/lovable-uploads/07731ecd-b5ee-4075-a120-d022a5c56f60.png',
+    duration: '3 hours',
+    price: 40,
+    description: 'Join us for an evening adventure focused on spotting sloths as they become active at night. Our expert guides know exactly where to find these fascinating creatures in their natural habitat.',
     guide: 'Diego',
-    phone: '+50561500559'
+    rating: 4.8,
+    totalReviews: 312,
+    phone: '+50685087360',
+    highlights: [
+      'Observe both two-toed and three-toed sloths',
+      'Learn about sloth behavior and adaptations',
+      'Night vision equipment provided',
+      'Perfect for families and photographers',
+      'Eco-friendly approach to wildlife viewing'
+    ]
   },
   {
     id: '4',
-    title: 'Rainforest Hiking Experience',
+    title: 'Toucan Observation Tour',
     location: 'La Fortuna',
-    image: 'https://images.unsplash.com/photo-1632935189145-c78d415bde8e',
-    duration: '5 hours',
-    price: 59,
-    description: 'Immerse yourself in the heart of Costa Rica\'s rainforest. Spot colorful toucans, learn about local flora and fauna, and experience the magic of the cloud forest.',
-    guide: 'Chris',
-    phone: '+50689484857'
-  },
-  {
-    id: '5',
-    title: 'Tortuguero Canal Tour',
-    location: 'Limon',
-    image: 'https://images.unsplash.com/photo-1582486225644-3897b3772b31',
-    duration: '7 hours',
-    price: 89,
-    description: 'Navigate the peaceful canals of Tortuguero National Park. Watch three-toed sloths lounging in the trees, spot diverse wildlife including monkeys, and countless bird species in their natural habitat.',
-    guide: 'Diego',
-    phone: '+50561500559'
-  },
-  {
-    id: '6',
-    title: 'Sunset Sailing Adventure',
-    location: 'Pacific Coast',
-    image: 'https://images.unsplash.com/photo-1605142859862-978be7eba909',
+    image: 'public/lovable-uploads/cec58bf8-8041-4883-af29-2b5eea0c7852.png',
     duration: '4 hours',
-    price: 129,
-    description: 'Set sail along the Pacific Coast and witness breathtaking sunsets while spotting scarlet macaws. Enjoy refreshments, spot marine life, and create unforgettable memories on this relaxing cruise.',
+    price: 55,
+    description: 'Discover the colorful world of toucans in this specialized night tour. See these magnificent birds as they settle in for the evening and learn about their important role in the ecosystem.',
     guide: 'Chris',
-    phone: '+50689484857'
+    rating: 4.7,
+    totalReviews: 278,
+    phone: '+50685087360',
+    highlights: [
+      'Observe keel-billed and other toucan species',
+      'Bird watching with professional equipment',
+      'Learn about rainforest bird conservation',
+      'Suitable for all experience levels',
+      'Includes refreshments during the tour'
+    ]
   }
 ];
 
@@ -126,14 +139,14 @@ const TourDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="relative h-[50vh] overflow-hidden">
+    <div className="min-h-screen bg-black text-white">
+      <div className="relative h-[60vh] overflow-hidden">
         <img 
           src={tour.image}
           alt={tour.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-0 left-0 w-full h-full bg-black/20" />
+        <div className="absolute top-0 left-0 w-full h-full bg-black/40" />
         <Button
           variant="ghost"
           className="absolute top-4 left-4 text-white hover:text-white/80 z-10"
@@ -143,13 +156,13 @@ const TourDetail = () => {
           Back
         </Button>
         
-        <div className="absolute bottom-4 left-4 bg-primary text-white px-3 py-1 rounded-full flex items-center">
+        <div className="absolute bottom-4 left-4 bg-white text-black px-3 py-1 rounded-full flex items-center">
           <Award className="h-4 w-4 mr-1" />
           <span>Top Rated Tour</span>
         </div>
       </div>
 
-      <div className="container mx-auto py-12">
+      <div className="container mx-auto py-12 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
             <h1 className="text-4xl font-bold mb-4">{tour.title}</h1>
@@ -157,40 +170,41 @@ const TourDetail = () => {
             <div className="flex items-center mb-4">
               {renderStars(tour.rating)}
               <span className="ml-2 font-semibold text-lg">{tour.rating.toFixed(1)}</span>
-              <span className="ml-2 text-gray-600">({tour.totalReviews} reviews)</span>
+              <span className="ml-2 text-gray-400">({tour.totalReviews} reviews)</span>
             </div>
             
             <div className="flex flex-wrap items-center gap-4 mb-6">
-              <div className="flex items-center text-gray-600">
-                <MapPin className="h-5 w-5 mr-1 text-primary" />
+              <div className="flex items-center text-gray-300">
+                <MapPin className="h-5 w-5 mr-1 text-white" />
                 <span>{tour.location}</span>
               </div>
-              <div className="flex items-center text-gray-600">
-                <Clock className="h-5 w-5 mr-1 text-primary" />
+              <div className="flex items-center text-gray-300">
+                <Clock className="h-5 w-5 mr-1 text-white" />
                 <span>{tour.duration}</span>
               </div>
-              <div className="font-semibold text-primary text-lg">${tour.price} per person</div>
+              <div className="font-semibold text-white text-lg">${tour.price} per person</div>
             </div>
             
             <div className="mb-8">
               <h2 className="text-2xl font-semibold mb-3">About This Tour</h2>
-              <p className="text-gray-700 mb-6">{tour.description}</p>
+              <p className="text-gray-300 mb-6">{tour.description}</p>
             </div>
             
             <div className="mb-6">
-              <h2 className="text-2xl font-semibold mb-3">Why It's Top Rated</h2>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>Exceptional guides with extensive knowledge</li>
-                <li>Small group sizes for personalized experience</li>
-                <li>Consistently high reviews for wildlife sightings</li>
-                <li>Safety standards that exceed expectations</li>
-                <li>Environmentally responsible practices</li>
+              <h2 className="text-2xl font-semibold mb-3">Tour Highlights</h2>
+              <ul className="list-disc pl-5 space-y-2 text-gray-300">
+                {tour.highlights?.map((highlight, index) => (
+                  <li key={index}>{highlight}</li>
+                ))}
               </ul>
             </div>
           </div>
           
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold mb-6">Book this Experience</h2>
+          <div className="bg-gray-900 p-6 rounded-lg">
+            <h2 className="text-2xl font-semibold mb-6 flex items-center">
+              <Moon className="h-5 w-5 mr-2" />
+              Book this Night Tour
+            </h2>
             <BookingForm 
               tourTitle={tour.title}
               location={tour.location}

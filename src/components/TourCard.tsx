@@ -2,7 +2,8 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
-import { TreePalm, Mountain, Turtle, MapPin, Bird, Leaf, Star } from 'lucide-react';
+import { Clock, MapPin, Star } from 'lucide-react';
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface TourCardProps {
   id: string;
@@ -14,31 +15,23 @@ interface TourCardProps {
   rating: number;
   rank: number;
   totalReviews?: number;
+  description?: string;
 }
 
-const TourCard = ({ id, title, location, image, duration, price, rating, rank, totalReviews = 0 }: TourCardProps) => {
+const TourCard = ({ id, title, location, image, duration, price, rating, rank, totalReviews = 0, description }: TourCardProps) => {
   const navigate = useNavigate();
 
-  const getIconAndEmoji = (image: string) => {
-    switch (image) {
-      case 'volcano':
-        return { icon: Mountain, emoji: '🌋', bgColor: 'bg-earth-light/10' };
-      case 'beach':
-        return { icon: TreePalm, emoji: '🏖️', bgColor: 'bg-ocean-light/10' };
-      case 'ocean':
-        return { icon: Turtle, emoji: '🐢', bgColor: 'bg-ocean/10' };
-      case 'forest':
-        return { icon: Leaf, emoji: '🌴', bgColor: 'bg-primary-light/10' };
-      case 'river':
-        return { icon: TreePalm, emoji: '🛶', bgColor: 'bg-ocean-light/10' };
-      case 'sunset':
-        return { icon: Bird, emoji: '🌅', bgColor: 'bg-earth/10' };
-      default:
-        return { icon: MapPin, emoji: '🗺️', bgColor: 'bg-primary/10' };
+  const getImageUrl = (imageType: string): string => {
+    if (imageType === 'toucan') {
+      return 'public/lovable-uploads/cec58bf8-8041-4883-af29-2b5eea0c7852.png';
+    } else if (imageType === 'sloth') {
+      return 'public/lovable-uploads/07731ecd-b5ee-4075-a120-d022a5c56f60.png';
+    } else if (imageType === 'frog') {
+      return 'public/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png';
     }
+    // Default or fallback image
+    return image;
   };
-
-  const { icon: Icon, emoji, bgColor } = getIconAndEmoji(image);
 
   const renderStars = (rating: number) => {
     const stars = [];
@@ -70,42 +63,47 @@ const TourCard = ({ id, title, location, image, duration, price, rating, rank, t
 
   return (
     <Card 
-      className={`group cursor-pointer transition-all duration-300 hover:shadow-xl transform hover:-translate-y-2 ${bgColor} relative`}
+      className="group cursor-pointer transition-all duration-300 hover:shadow-xl overflow-hidden bg-black text-white hover:-translate-y-2"
       onClick={() => navigate(`/tour/${id}`)}
     >
-      <div className="absolute -top-3 -left-3 bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-md z-10">
-        {rank}
-      </div>
-      <div className="p-6">
-        <div className="flex items-center justify-between mb-4">
-          <span className="text-3xl" role="img" aria-label="tour type">
-            {emoji}
-          </span>
-          <Icon className="w-6 h-6 text-primary" />
-        </div>
+      <div className="relative">
+        <AspectRatio ratio={1}>
+          <img 
+            src={getImageUrl(image)}
+            alt={title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+        </AspectRatio>
         
-        <h3 className="text-xl font-semibold text-primary group-hover:text-primary-dark transition-colors mb-2">
-          {title}
-        </h3>
-        
-        <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
-          <MapPin className="w-4 h-4" />
-          <span>{location}</span>
+        <div className="absolute -top-3 -left-3 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-md z-10">
+          {rank}
         </div>
 
-        <div className="flex items-center mb-3">
-          {renderStars(rating)}
-          <span className="ml-1 text-sm text-gray-600">({totalReviews})</span>
-        </div>
-        
-        <div className="flex justify-between items-center pt-4 border-t border-gray-100">
-          <div className="flex flex-col">
-            <span className="text-sm text-gray-600">Duration</span>
-            <span className="font-medium">{duration}</span>
+        <div className="absolute bottom-0 left-0 p-6 w-full">
+          <h3 className="text-xl font-semibold text-white mb-2">
+            {title}
+          </h3>
+          
+          <div className="flex items-center gap-2 text-sm text-gray-200 mb-2">
+            <MapPin className="w-4 h-4" />
+            <span>{location}</span>
           </div>
-          <div className="flex flex-col items-end">
-            <span className="text-sm text-gray-600">From</span>
-            <span className="font-semibold text-primary">${price}</span>
+
+          <div className="flex items-center mb-3">
+            {renderStars(rating)}
+            <span className="ml-1 text-sm text-gray-200">({totalReviews})</span>
+          </div>
+          
+          <div className="flex justify-between items-center pt-4 border-t border-gray-700">
+            <div className="flex items-center text-gray-200">
+              <Clock className="w-4 h-4 mr-1" />
+              <span>{duration}</span>
+            </div>
+            <div className="flex flex-col items-end">
+              <span className="text-sm text-gray-200">From</span>
+              <span className="font-semibold text-white">${price}</span>
+            </div>
           </div>
         </div>
       </div>
