@@ -16,13 +16,13 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Hero Section with Image */}
-      <div className="container mx-auto py-8">
+      {/* Hero Section with Cropped and Condensed Image */}
+      <div className="container mx-auto py-4">
         <div className="flex justify-center">
           <img 
             src="/lovable-uploads/e15d9e1a-b8b6-4ce4-ad4a-498e607acd13.png" 
             alt="Rio Habana Night Tours" 
-            className="w-full max-w-4xl mx-auto rounded-lg shadow-xl"
+            className="w-full max-w-4xl mx-auto rounded-lg shadow-xl object-cover h-[50vh] md:h-[60vh]"
           />
         </div>
       </div>
