@@ -23,7 +23,7 @@ const Index = () => {
         <div className="flex justify-center">
           <div className="relative w-full max-w-4xl mx-auto">
             <img 
-              src="/lovable-uploads/da2efb5f-4b88-4403-8f3c-ce331a829ee3.png" 
+              src="/lovable-uploads/e15d9e1a-b8b6-4ce4-ad4a-498e607acd13.png" 
               alt="Rio Habana Night Tours" 
               className="w-full rounded-lg shadow-xl object-contain h-[40vh] sm:h-[45vh] md:h-[55vh]"
             />
