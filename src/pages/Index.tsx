@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import BookingForm from '@/components/BookingForm';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -15,13 +16,15 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Header Section with Site Title */}
-      <div className="container mx-auto py-12 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">NIGHT TOUR RIO HABANA</h1>
-        <p className="text-xl md:text-2xl mb-6">La Fortuna, Costa Rica</p>
-        <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-          Discover Costa Rica's magical wildlife after dark with our expert-guided night tours.
-        </p>
+      {/* Hero Section with Image */}
+      <div className="container mx-auto py-8">
+        <div className="flex justify-center">
+          <img 
+            src="/lovable-uploads/e15d9e1a-b8b6-4ce4-ad4a-498e607acd13.png" 
+            alt="Rio Habana Night Tours" 
+            className="w-full max-w-4xl mx-auto rounded-lg shadow-xl"
+          />
+        </div>
       </div>
 
       {/* Featured Night Walk Adventure Flyer */}
@@ -53,18 +56,45 @@ const Index = () => {
                 </li>
               </ul>
               <p className="text-xl mb-6">1.5 to 2 hours</p>
-              <Button 
-                className="bg-black hover:bg-gray-800 text-white text-lg px-8 py-6"
-                onClick={() => handleBookNow('50685087360')}
-              >
-                Book Now via WhatsApp
-              </Button>
-              <Button 
-                className="bg-white hover:bg-gray-200 text-black text-lg px-8 py-6 ml-4"
-                onClick={() => navigate('/tour/1')}
-              >
-                View Details
-              </Button>
+              <div className="flex flex-col md:flex-row gap-4">
+                <Button 
+                  className="bg-black hover:bg-gray-800 text-white text-lg px-8 py-6"
+                  onClick={() => handleBookNow('50685087360')}
+                >
+                  Book Now via WhatsApp
+                </Button>
+                <Button 
+                  className="bg-white hover:bg-gray-200 text-black text-lg px-8 py-6"
+                  onClick={() => navigate('/tour/1')}
+                >
+                  View Details
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Booking Section */}
+      <div className="bg-gray-900 py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-md mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
+            <div className="bg-green-600 p-6 text-white">
+              <h3 className="text-2xl font-bold">Book Your Night Tour</h3>
+              <p className="text-green-100">Select a date and number of guests</p>
+            </div>
+            <div className="p-6">
+              <BookingForm 
+                tourTitle="Night Tour Rio Habana" 
+                location="La Fortuna, Costa Rica" 
+                onSubmit={(date, guests) => {
+                  const formattedDate = date.toLocaleDateString();
+                  const message = encodeURIComponent(
+                    `Hello, I would like to book the Night Tour Rio Habana in La Fortuna for ${formattedDate} with ${guests} guest${guests !== 1 ? 's' : ''}. Please provide availability and details.`
+                  );
+                  window.open(`https://wa.me/50685087360?text=${message}`);
+                }}
+              />
             </div>
           </div>
         </div>

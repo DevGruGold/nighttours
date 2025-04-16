@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
@@ -26,43 +27,45 @@ const BookingForm = ({ tourTitle, location, onSubmit }: BookingFormProps) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <label className="text-sm font-medium">Select Date</label>
+        <label className="text-sm font-medium text-gray-700">Select Date</label>
         <Popover>
           <PopoverTrigger asChild>
             <Button
               variant="outline"
-              className="w-full justify-start text-left font-normal"
+              className="w-full justify-start text-left font-normal border-gray-300 text-gray-700"
             >
               <CalendarIcon className="mr-2 h-4 w-4" />
               {date ? format(date, 'PPP') : <span>Pick a date</span>}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0 bg-white">
+          <PopoverContent className="w-auto p-0 bg-white border border-gray-200">
             <Calendar
               mode="single"
               selected={date}
               onSelect={setDate}
               initialFocus
               disabled={(date) => date < new Date()}
+              className="rounded bg-white text-gray-900"
             />
           </PopoverContent>
         </Popover>
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-medium">Number of Guests</label>
+        <label className="text-sm font-medium text-gray-700">Number of Guests</label>
         <Input
           type="number"
           min="1"
           max="20"
           value={guests}
           onChange={(e) => setGuests(parseInt(e.target.value))}
+          className="border-gray-300 text-gray-900"
         />
       </div>
 
       <Button 
         type="submit" 
-        className="w-full bg-primary hover:bg-primary-dark"
+        className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2"
         disabled={!date}
       >
         Book via WhatsApp
