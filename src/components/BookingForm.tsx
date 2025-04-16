@@ -27,7 +27,7 @@ const BookingForm = ({ tourTitle, location, onSubmit }: BookingFormProps) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <label className="text-sm font-medium text-gray-700">Select Date</label>
+        <label className="block text-sm font-medium text-gray-700">Select Date</label>
         <Popover>
           <PopoverTrigger asChild>
             <Button
@@ -52,14 +52,14 @@ const BookingForm = ({ tourTitle, location, onSubmit }: BookingFormProps) => {
       </div>
 
       <div className="space-y-2">
-        <label className="text-sm font-medium text-gray-700">Number of Guests</label>
+        <label className="block text-sm font-medium text-gray-700">Number of Guests</label>
         <Input
           type="number"
           min="1"
           max="20"
           value={guests}
           onChange={(e) => setGuests(parseInt(e.target.value))}
-          className="border-gray-300 text-gray-900"
+          className="border-gray-300 text-gray-900 w-full"
         />
       </div>
 
