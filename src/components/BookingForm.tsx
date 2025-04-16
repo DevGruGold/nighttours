@@ -32,20 +32,20 @@ const BookingForm = ({ tourTitle, location, onSubmit }: BookingFormProps) => {
           <PopoverTrigger asChild>
             <Button
               variant="outline"
-              className="w-full justify-start text-left font-normal border-gray-300 text-gray-700"
+              className="w-full justify-start text-left font-normal border-gray-300 text-gray-700 bg-white"
             >
               <CalendarIcon className="mr-2 h-4 w-4" />
               {date ? format(date, 'PPP') : <span>Pick a date</span>}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0 bg-white border border-gray-200">
+          <PopoverContent className="w-auto p-0" align="start">
             <Calendar
               mode="single"
               selected={date}
               onSelect={setDate}
               initialFocus
               disabled={(date) => date < new Date()}
-              className="rounded bg-white text-gray-900"
+              className="bg-white border-none"
             />
           </PopoverContent>
         </Popover>
@@ -59,7 +59,7 @@ const BookingForm = ({ tourTitle, location, onSubmit }: BookingFormProps) => {
           max="20"
           value={guests}
           onChange={(e) => setGuests(parseInt(e.target.value))}
-          className="border-gray-300 text-gray-900 w-full"
+          className="border-gray-300 text-gray-900 w-full bg-white"
         />
       </div>
 
