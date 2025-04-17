@@ -37,7 +37,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
             <div>
               <img 
-                src="/lovable-uploads/461fb1d7-9855-49a9-a1c9-e4d3c31e3437.png" 
+                src="/lovable-uploads/1008dccb-f695-4c83-a7e8-016bfc52eff3.png" 
                 alt="Night Tour Featured Image" 
                 className="rounded-lg shadow-xl mx-auto max-w-full h-auto"
               />
