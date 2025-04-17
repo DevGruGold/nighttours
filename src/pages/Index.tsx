@@ -31,38 +31,22 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Featured Night Walk Adventure Flyer */}
-      <div className="bg-green-400 py-8 sm:py-12">
+      {/* Featured Night Tour Images */}
+      <div className="bg-black py-8 sm:py-12">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
-            <div className="order-2 md:order-1">
+            <div>
               <img 
                 src="/lovable-uploads/461fb1d7-9855-49a9-a1c9-e4d3c31e3437.png" 
-                alt="Night Walk Adventure Flyer" 
+                alt="Night Tour Featured Image" 
                 className="rounded-lg shadow-xl mx-auto max-w-full h-auto"
               />
             </div>
-            <div className="text-black order-1 md:order-2">
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4">NIGHT WALK ADVENTURE</h2>
-              <p className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6">15% OFF GROUPS + 3 OR MORE</p>
-              <ul className="space-y-2 sm:space-y-3 text-base sm:text-lg mb-4 sm:mb-6">
-                <li className="flex items-center">
-                  <span className="mr-2 text-xl sm:text-2xl">•</span> Transportation included
-                </li>
-                <li className="flex items-center">
-                  <span className="mr-2 text-xl sm:text-2xl">•</span> Bilingual tour guide
-                </li>
-                <li className="flex items-center">
-                  <span className="mr-2 text-xl sm:text-2xl">•</span> Private reserve next to Arenal volcano
-                </li>
-                <li className="flex items-center">
-                  <span className="mr-2 text-xl sm:text-2xl">•</span> Small groups for a personalized experience
-                </li>
-              </ul>
-              <p className="text-lg sm:text-xl mb-4 sm:mb-6">1.5 to 2 hours</p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <div className="text-white">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6">NIGHT TOUR ADVENTURE</h2>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6">
                 <Button 
-                  className="bg-black hover:bg-gray-800 text-white text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 w-full sm:w-auto"
+                  className="bg-green-600 hover:bg-green-700 text-white text-base sm:text-lg px-6 py-4 sm:px-8 sm:py-6 w-full sm:w-auto"
                   onClick={() => handleBookNow('50685087360')}
                 >
                   Book Now via WhatsApp
