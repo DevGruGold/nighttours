@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import BookingForm from '@/components/BookingForm';
@@ -11,7 +10,7 @@ const tours = [
     id: '1',
     title: 'Night Tour Rio Habana',
     location: 'La Fortuna, Costa Rica',
-    image: 'public/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png',
+    image: '/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png',
     duration: '3 hours',
     price: 45,
     description: 'Experience the magic of the Rio Habana area after dark with our expert-guided night tour. Witness the transformation of the rainforest as nocturnal creatures emerge, including the iconic red-eyed tree frogs. Our guides use specialized techniques to locate wildlife while respecting their natural habitat.',
@@ -32,7 +31,7 @@ const tours = [
     id: '2',
     title: 'Red-Eyed Tree Frog Safari',
     location: 'La Fortuna',
-    image: 'public/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png',
+    image: '/lovable-uploads/5b6341ed-dd6e-41a3-974e-01c9aaa91c99.png',
     duration: '3 hours',
     price: 50,
     description: 'A specialized tour focused on finding the iconic red-eyed tree frogs in their natural habitat. Learn about their unique adaptations and behaviors from our knowledgeable guides.',
@@ -52,7 +51,7 @@ const tours = [
     id: '3',
     title: 'Sloth Spotting Night Tour',
     location: 'La Fortuna',
-    image: 'public/lovable-uploads/07731ecd-b5ee-4075-a120-d022a5c56f60.png',
+    image: '/lovable-uploads/07731ecd-b5ee-4075-a120-d022a5c56f60.png',
     duration: '3 hours',
     price: 40,
     description: 'Join us for an evening adventure focused on spotting sloths as they become active at night. Our expert guides know exactly where to find these fascinating creatures in their natural habitat.',
@@ -72,7 +71,7 @@ const tours = [
     id: '4',
     title: 'Toucan Observation Tour',
     location: 'La Fortuna',
-    image: 'public/lovable-uploads/cec58bf8-8041-4883-af29-2b5eea0c7852.png',
+    image: '/lovable-uploads/cec58bf8-8041-4883-af29-2b5eea0c7852.png',
     duration: '4 hours',
     price: 55,
     description: 'Discover the colorful world of toucans in this specialized night tour. See these magnificent birds as they settle in for the evening and learn about their important role in the ecosystem.',
