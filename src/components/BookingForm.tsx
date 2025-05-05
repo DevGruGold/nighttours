@@ -38,14 +38,14 @@ const BookingForm = ({ tourTitle, location, onSubmit }: BookingFormProps) => {
               {date ? format(date, 'PPP') : <span>Pick a date</span>}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
+          <PopoverContent className="w-auto p-0 bg-white" align="start">
             <Calendar
               mode="single"
               selected={date}
               onSelect={setDate}
               initialFocus
               disabled={(date) => date < new Date()}
-              className="bg-gray-900 border-none"
+              className="bg-white border-none"
             />
           </PopoverContent>
         </Popover>
