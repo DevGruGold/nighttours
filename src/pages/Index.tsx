@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import BookingForm from '@/components/BookingForm';
 import { useIsMobile } from '@/hooks/use-mobile';
+import TourCard from '@/components/TourCard';
+import { Star, Award } from 'lucide-react';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -46,6 +48,50 @@ const Index = () => {
                     window.open(`https://wa.me/50685087360?text=${message}`);
                   }}
                 />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Top Tours Costa Rica Ranking Section */}
+      <div className="bg-gradient-to-b from-yellow-900/30 to-black py-8">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <Award className="text-yellow-500 h-8 w-8" />
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Top Tours Costa Rica</h2>
+            <Award className="text-yellow-500 h-8 w-8" />
+          </div>
+          
+          <div className="flex flex-col items-center mb-8">
+            <div className="relative">
+              <div className="absolute -top-4 -left-4 bg-yellow-500 text-black rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl shadow-lg z-10">
+                #1
+              </div>
+              <div className="relative overflow-hidden rounded-lg border-4 border-yellow-500 shadow-[0_0_25px_rgba(234,179,8,0.3)]">
+                <TourCard
+                  id="1"
+                  title="Night Tour Rio Habana"
+                  location="La Fortuna, Costa Rica"
+                  image="/lovable-uploads/f449f80c-6f48-4d6c-b6e5-4487ee38fc54.png"
+                  duration="2 hours"
+                  price={59}
+                  rating={5.0}
+                  rank={1}
+                  totalReviews={124}
+                  description="The #1 rated night tour in Costa Rica. Discover the magical nocturnal wildlife of Costa Rica's rainforest with our expert guides."
+                />
+              </div>
+              <div className="flex items-center justify-center gap-1 mt-4">
+                <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                <span className="text-yellow-400 font-semibold ml-2">(124 reviews)</span>
+              </div>
+              <div className="text-center mt-2">
+                <p className="text-sm text-yellow-300 font-semibold">Ranked #1 in Top Tours Costa Rica's "Top Ten Night Tours"</p>
               </div>
             </div>
           </div>

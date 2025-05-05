@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Moon, Phone } from 'lucide-react';
+import { Moon, Phone, Award } from 'lucide-react';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -18,15 +18,22 @@ const Header = () => {
           className="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition-colors"
         >
           <Moon className="h-6 w-6" />
-          <span className="font-bold text-lg md:text-xl">Night Tour Rio Habana</span>
+          <span className="font-bold text-lg">Night Tours</span>
         </button>
         
-        <nav className="flex items-center space-x-4">
+        <div className="hidden md:flex items-center">
+          <div className="flex items-center mr-4 text-yellow-300">
+            <Award className="h-4 w-4 mr-1" />
+            <span className="text-sm">By Top Tours Costa Rica</span>
+          </div>
+        </div>
+        
+        <nav>
           <button 
             onClick={handleWhatsApp}
-            className="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-full flex items-center transition-colors"
+            className="bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-1.5 rounded-full flex items-center transition-colors text-sm"
           >
-            <Phone className="h-4 w-4 mr-2" />
+            <Phone className="h-3 w-3 mr-1" />
             <span className="font-medium">Book via WhatsApp</span>
           </button>
         </nav>
