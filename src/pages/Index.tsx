@@ -76,36 +76,28 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Featured Night Tour Images */}
-      <div className="bg-black py-8 sm:py-12">
+      {/* Tour Features - Using text instead of green photos */}
+      <div className="bg-black/80 py-12 border-t border-yellow-500/20">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-gray-900 p-6 rounded-lg">
-              <img 
-                src="/lovable-uploads/1008dccb-f695-4c83-a7e8-016bfc52eff3.png" 
-                alt="Night Tour Featured Image" 
-                className="rounded-lg shadow-xl mb-4 w-full h-60 object-cover"
-              />
-              <h3 className="text-xl font-bold mb-2 text-yellow-500">Nocturnal Wildlife</h3>
-              <p className="text-gray-300">Spot fascinating creatures that only emerge after dark, including frogs, spiders, and insects.</p>
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-yellow-400">What Makes Our Tour Special</h2>
+            <div className="w-24 h-1 bg-yellow-500 mx-auto"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-6 rounded-lg border border-yellow-500/20 bg-black/40 hover:bg-black/60 transition-all">
+              <h3 className="text-xl font-bold mb-3 text-yellow-400">Nocturnal Wildlife</h3>
+              <p className="text-gray-300">Spot fascinating creatures that only emerge after dark, including frogs, spiders, and insects in their natural habitat.</p>
             </div>
-            <div className="bg-gray-900 p-6 rounded-lg">
-              <img 
-                src="/lovable-uploads/da2efb5f-4b88-4403-8f3c-ce331a829ee3.png" 
-                alt="Night Tour Featured Image" 
-                className="rounded-lg shadow-xl mb-4 w-full h-60 object-cover"
-              />
-              <h3 className="text-xl font-bold mb-2 text-yellow-500">Expert Guides</h3>
-              <p className="text-gray-300">Our knowledgeable guides will help you spot and learn about the fascinating rainforest ecosystem.</p>
+            
+            <div className="p-6 rounded-lg border border-yellow-500/20 bg-black/40 hover:bg-black/60 transition-all">
+              <h3 className="text-xl font-bold mb-3 text-yellow-400">Expert Local Guides</h3>
+              <p className="text-gray-300">Our knowledgeable guides are experts in local ecology and will help you spot and learn about the rainforest ecosystem.</p>
             </div>
-            <div className="bg-gray-900 p-6 rounded-lg">
-              <img 
-                src="/lovable-uploads/461fb1d7-9855-49a9-a1c9-e4d3c31e3437.png" 
-                alt="Night Tour Featured Image" 
-                className="rounded-lg shadow-xl mb-4 w-full h-60 object-cover"
-              />
-              <h3 className="text-xl font-bold mb-2 text-yellow-500">Memorable Adventure</h3>
-              <p className="text-gray-300">Experience the sounds and sights of the rainforest in a completely different light.</p>
+            
+            <div className="p-6 rounded-lg border border-yellow-500/20 bg-black/40 hover:bg-black/60 transition-all">
+              <h3 className="text-xl font-bold mb-3 text-yellow-400">Unforgettable Experience</h3>
+              <p className="text-gray-300">Experience the sounds, sights and atmosphere of the Costa Rican rainforest in a completely different light.</p>
             </div>
           </div>
         </div>
